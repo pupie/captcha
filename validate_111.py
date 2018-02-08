@@ -46,7 +46,7 @@ def model_test():
     total_number = len(name_list)
 
     # 加载graph
-    saver = tf.train.import_meta_graph(MODEL_SAVE_PATH + "crack_captcha.model-1200.meta")
+    saver = tf.train.import_meta_graph(MODEL_SAVE_PATH + "crack_captcha.model-2600.meta")
     graph = tf.get_default_graph()
 
     # 从graph取得 tensor，他们的name是在构建graph时定义的
@@ -76,11 +76,11 @@ def model_test():
                 count += 1
             else:
                 result = '错误'
-                plt.show()
+                # plt.show()
             print('实际值：{}， 预测值：{}，测试结果：{}'.format(right_value, predict_value, result))
             print('\n')
 
-        # 打印正确率，2018年2月8日，1600次循环计算结果为99.30%
+        # 打印正确率，2018年2月8日，1600次循环计算结果为99.40%
         print('正确率：%.2f%%(%d/%d)' % (count * 100 / total_number, count, total_number))
 
 
