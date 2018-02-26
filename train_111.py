@@ -12,9 +12,12 @@ import time
 import datetime
 
 # 本工具通过卷积神经网络深度学习1药网验证码并保存模型
+absolute_model_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "./model_111")) + "\\"
+absolute_image_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "./image_111")) + "\\"
+model_file_name = "crack_captcha.model"
 
 # 验证码图片的存放路径
-CAPTCHA_IMAGE_PATH = 'D:/captcha/image_111/'
+CAPTCHA_IMAGE_PATH = absolute_image_path
 
 # 验证码图片的宽度
 CAPTCHA_IMAGE_WIDTH = 100
@@ -38,7 +41,7 @@ TRAINING_IMAGE_NAME = []
 VALIDATION_IMAGE_NAME = []
 
 # 存放训练好的模型的路径
-MODEL_SAVE_PATH = 'D:/captcha/model_111/'
+MODEL_SAVE_PATH = absolute_model_path
 
 
 def get_image_file_name(img_path=CAPTCHA_IMAGE_PATH):
@@ -196,7 +199,7 @@ def train_data_with_cnn():
                 now_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                 print("steps=%d, accuracy=%f, now_time=%s" % (steps, acc, now_time))
                 if acc > 0.999:  # 当准确度大于99.9%的时候停止并保存模型
-                    saver.save(sess, MODEL_SAVE_PATH + "crack_captcha.model", global_step=steps)
+                    saver.save(sess, MODEL_SAVE_PATH + model_file_name, global_step=steps)
                     break
             steps += 1
 

@@ -10,15 +10,18 @@ import os
 import matplotlib.pyplot as plt
 
 # 本工具通过卷积神经网络计算验证码模型准确度
+absolute_model_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "./model_yaoex")) + "\\"
+absolute_image_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "./test_yaoex")) + "\\"
+model_file_name = "crack_captcha.model-3300.meta"
 
 # 验证码字符串长度
 CAPTCHA_LEN = 4
 
 # 存放训练好的模型的路径
-MODEL_SAVE_PATH = 'D:/captcha/model_yaoex/'
+MODEL_SAVE_PATH = absolute_model_path
 
 # 存放用于验证的验证码图片的路径
-TEST_IMAGE_PATH = 'D:/captcha/test_yaoex/'
+TEST_IMAGE_PATH = absolute_image_path
 
 
 def get_image_data_and_name(file_name, file_path=TEST_IMAGE_PATH):
@@ -46,7 +49,7 @@ def model_test():
     total_number = len(name_list)
 
     # 加载graph
-    saver = tf.train.import_meta_graph(MODEL_SAVE_PATH + "crack_captcha.model.meta")
+    saver = tf.train.import_meta_graph(MODEL_SAVE_PATH + model_file_name)
     graph = tf.get_default_graph()
 
     # 从graph取得 tensor，他们的name是在构建graph时定义的
