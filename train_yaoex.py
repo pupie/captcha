@@ -12,8 +12,8 @@ import time
 import datetime
 
 # 本工具通过卷积神经网络深度学习1号药城验证码并保存模型
-absolute_model_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "./model_111")) + "\\"
-absolute_image_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "./image_111")) + "\\"
+absolute_model_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "./model_yaoex")) + "\\"
+absolute_image_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "./image_yaoex")) + "\\"
 model_file_name = "crack_captcha.model"
 
 # 验证码图片的存放路径
