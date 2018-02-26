@@ -12,8 +12,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # 屏蔽tensorflow运行时CPU指令�
 CAPTCHA_LEN = 4
 
 absolute_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../file/b2bpc/captcha_cnn/model")) + "\\"
-
-# MODEL_SAVE_PATH = 'D:/captcha/model/'
+model_file_name = "crack_captcha.model.meta"
 MODEL_SAVE_PATH = absolute_path
 TEST_IMAGE_PATH = 'C:/'
 
@@ -42,7 +41,7 @@ def predict_captcha(file_name="captcha.jpg"):
     :return: 验证码字符串
     """
     # 加载graph
-    saver = tf.train.import_meta_graph(MODEL_SAVE_PATH + "crack_captcha.model.meta")
+    saver = tf.train.import_meta_graph(MODEL_SAVE_PATH + model_file_name)
     graph = tf.get_default_graph()
 
     # 从graph取得tensor，他们的name是在构建graph时定义的
